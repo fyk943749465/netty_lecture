@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+</head>
+<body>
+<script type="text/javascript">
+    let socket;
+
+    if (window.WebSocket) {
+
+        socket = new WebSocket("ws://localhost:8899/ws");
+
+        socket.onmessage = function (event) {
+            let ta = document.getElementById("responseText");
+            ta.value = ta.value + "\n" + event.data;
+        }
+
+        socket.onopen = function (event) {
+            let ta = document.getElementById("responseText");
+            ta.value = "connection opened";
+        }
+
+        socket.onclose = function (event) {
+
+            let ta = document.getElementById("responseText");
+            ta.value = "connection closed";
+        }
+    } else {
+        alert("WebSocket is not supported by Browser");
+    }
+
+    function send(message) {
+
+        if (!window.WebSocket) {
+            return ;
+        }
+
+        if (socket.readyState == WebSocket.OPEN) {
+            socket.send(message);
+        } else {
+            alert("connection has not been opened");
+        }
+    }
+
+</script>
+<form onsubmit="return false;">
+    <textarea name="message" style="width: 400px; height: 200px;"></textarea>
+    <input type="button" value="send data" onclick="send(this.form.message.value)">
+    <h3>服务端输出</h3>
+    <textarea id="responseText" style="width: 400px; height: 200px;"></textarea>
+    <input type="button" onclick="javascript: document.getElementById('responseText').value=''" value="clear content">
+</form>
+</body>
+</html>
