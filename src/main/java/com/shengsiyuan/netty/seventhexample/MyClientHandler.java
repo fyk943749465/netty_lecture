@@ -46,6 +46,7 @@ public class MyClientHandler extends SimpleChannelInboundHandler<MyMessageInfo.M
         System.out.println("send msg to server finished");
     }
 
+
     //    @Override
 //    protected void channelRead0(ChannelHandlerContext ctx, byte[] msg) throws Exception {
 //

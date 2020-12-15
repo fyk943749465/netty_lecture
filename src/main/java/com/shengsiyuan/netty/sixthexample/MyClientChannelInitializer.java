@@ -1,6 +1,6 @@
 package com.shengsiyuan.netty.sixthexample;
 
-import protobuf.DataInfo;
+//import protobuf.DataInfo;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -18,10 +18,10 @@ public class MyClientChannelInitializer extends ChannelInitializer<SocketChannel
         ChannelPipeline pipeline = ch.pipeline();
 
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
-        pipeline.addLast(new ProtobufDecoder(DataInfo.Student.getDefaultInstance()));
+//        pipeline.addLast(new ProtobufDecoder(DataInfo.Student.getDefaultInstance()));
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufEncoder());
 
-        pipeline.addLast(new MyClientHandler());
+//        pipeline.addLast(new MyClientHandler());
     }
 }

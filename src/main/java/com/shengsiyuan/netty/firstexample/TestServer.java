@@ -10,6 +10,8 @@ public class TestServer {
 
     public static void main(String[] args) throws Exception {
 
+
+        // 时间循环组
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
