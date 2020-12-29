@@ -1,0 +1,58 @@
+@startuml
+
+abstract class SimpleFactory {
+
+}
+
+abstract class Pizza {
+    + void prepare()
+    + void bake()
+    + void cut()
+    + void box()
+}
+
+class BeiJingCheessPizza {
+
+}
+
+class BeiJingPepperPizza {
+
+}
+
+class LondonCheessPizza {
+
+}
+
+class LondonPepperPizza {
+
+}
+
+Pizza <|-- BeiJingCheessPizza
+Pizza <|-- BeiJingPepperPizza
+Pizza <|-- LondonCheessPizza
+Pizza <|-- LondonPepperPizza
+
+abstract class OrderPizza {
+    + createPizza(): Pizza
+}
+
+class BeiJingOrderPizza {
+
+}
+
+class LondonOrderPizza {
+
+}
+
+OrderPizza <|-- BeiJingOrderPizza
+OrderPizza <|-- LondonOrderPizza
+
+
+BeiJingCheessPizza <.. BeiJingOrderPizza
+BeiJingPepperPizza <.. BeiJingOrderPizza
+LondonCheessPizza <.. LondonOrderPizza
+LondonPepperPizza <.. LondonOrderPizza
+
+
+
+@enduml
