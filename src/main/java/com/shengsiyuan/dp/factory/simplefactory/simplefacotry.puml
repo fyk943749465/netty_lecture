@@ -1,0 +1,51 @@
+@startuml
+
+title 简单工厂模式UML图
+
+abstract class Pizza {
+    + void prepare()
+    + void bake()
+    + void cut()
+    + void box()
+}
+
+class CheessPizza {
+
+}
+
+class GreekPizza {
+
+}
+
+
+Pizza <|-- CheessPizza:泛化
+Pizza <|-- GreekPizza:泛化
+
+class OrderPizza {
+
+}
+
+
+
+class OrderPizza2 {
+}
+
+class OrderPizza3 {
+}
+
+class SimpleFactory {
+
+}
+
+note top: 直接进行业务上的判断\n返回对象给客户端，简单直接
+
+SimpleFactory o-- OrderPizza:聚合
+SimpleFactory o-- OrderPizza2:聚合
+SimpleFactory o-- OrderPizza3:聚合
+
+SimpleFactory <-- Pizza:关联
+
+
+
+
+@enduml
