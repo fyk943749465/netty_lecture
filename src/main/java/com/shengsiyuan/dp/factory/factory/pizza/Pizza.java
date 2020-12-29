@@ -7,7 +7,7 @@ public abstract class Pizza {
     public abstract void prepare();
 
     public void bake() {
-        System.out.println(name + "　烘烤完成");
+        System.out.println(name + " 烘烤完成");
     }
 
     public void cut() {
@@ -15,7 +15,7 @@ public abstract class Pizza {
     }
 
     public void box() {
-        System.out.println(name + "装箱完成");
+        System.out.println(name + " 装箱完成");
     }
 
     public void setName(String name) {
