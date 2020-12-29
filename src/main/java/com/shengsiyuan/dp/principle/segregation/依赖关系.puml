@@ -1,0 +1,16 @@
+@startuml
+
+class Person {
+    - IDCard card
+}
+class IDCard{
+
+}
+
+note "依赖关系" as N1
+Person ..N1
+N1 ..IDCard
+
+Person <-- IDCard
+
+@enduml

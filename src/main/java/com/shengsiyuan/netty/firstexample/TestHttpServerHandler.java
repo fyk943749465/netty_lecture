@@ -9,6 +9,8 @@ import io.netty.util.CharsetUtil;
 
 import java.net.URI;
 
+
+// 自定义处理器类，该类通常继承SimpleChannelInboundHandler 也可以继承ChannelInboundHandlerAdapter该类
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {

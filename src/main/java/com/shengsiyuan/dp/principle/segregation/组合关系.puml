@@ -1,0 +1,18 @@
+@startuml
+
+class Computer {
+    - Mouse mouse
+    - Monitor monitor
+
+    + void setMouse(Mouse mouse)
+    + void setMonitor(Monitor monitor)
+}
+
+note top: 组合关系是同生共死的关系
+
+class Mouse
+class Monitor
+
+Computer *-- Mouse
+Computer *-- Monitor
+@enduml

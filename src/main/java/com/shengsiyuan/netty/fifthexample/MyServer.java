@@ -8,6 +8,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
+// websocket协议是基于html5规范提出来的协议，该协议是建立在http协议基础之上的一个协议
+
 public class MyServer {
 
     public static void main(String[] args) throws InterruptedException {
