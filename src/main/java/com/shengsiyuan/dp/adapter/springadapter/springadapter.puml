@@ -1,0 +1,39 @@
+@startuml
+
+class DispatchServlet{
+    + doDispatch(): void
+}
+
+interface HandlerAdapter{
+
+}
+
+
+class SimpleHandlerAdapter
+class HttpHandlerAdapter
+class AnnotationHandlerAdapter
+
+HandlerAdapter <|.. SimpleHandlerAdapter:实现
+HandlerAdapter <|.. HttpHandlerAdapter:实现
+HandlerAdapter <|.. AnnotationHandlerAdapter:实现
+
+interface Controller {
+
+}
+
+class HttpController
+class SimpleController
+class AnnotationController
+
+Controller <|.. HttpController:实现
+Controller <|.. SimpleController:实现
+Controller <|.. AnnotationController:实现
+
+DispatchServlet o-- HandlerAdapter:聚合
+Controller <.. DispatchServlet:依赖
+
+HttpController <.. HttpHandlerAdapter
+SimpleController <.. SimpleHandlerAdapter
+AnnotationController <.. AnnotationHandlerAdapter
+
+@enduml

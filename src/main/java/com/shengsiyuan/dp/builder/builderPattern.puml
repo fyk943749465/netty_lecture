@@ -1,0 +1,32 @@
+@startuml
+
+abstract class Builder {
+    + buildPartA()
+    + buildPartB()
+    + buildPartC()
+    + getResult()
+}
+
+
+class Director{
+    - builder: Builder
+    + construct()
+}
+
+Builder o-- Director:聚合
+
+class Product {
+
+}
+
+Builder *-- Product:组合
+
+class ConcreteBuilder {
+    + buildPartA()
+    + buildPartB()
+    + buildPartC()
+    + builder
+}
+
+Builder <|-- ConcreteBuilder:继承
+@enduml

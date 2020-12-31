@@ -1,6 +1,6 @@
 @startuml
 
-title 工厂模式
+title 抽象工厂类图
 
 abstract class Pizza {
     + void prepare()
@@ -30,27 +30,31 @@ Pizza <|-- BeiJingPepperPizza:继承
 Pizza <|-- LondonCheessPizza:继承
 Pizza <|-- LondonPepperPizza:继承
 
-abstract class OrderPizza {
+class OrderPizza {
+
+}
+
+
+interface AbsFactory {
     + createPizza(): Pizza
 }
 
-class BeiJingOrderPizza {
+class BJFactory {
 
 }
 
-class LondonOrderPizza {
+class LDFactory {
 
 }
 
-OrderPizza <|-- BeiJingOrderPizza:继承
-OrderPizza <|-- LondonOrderPizza:继承
+AbsFactory <|.. BJFactory:实现
+AbsFactory <|.. LDFactory:实现
 
+OrderPizza o-- AbsFactory:聚合
 
-BeiJingCheessPizza <.. BeiJingOrderPizza:依赖
-BeiJingPepperPizza <.. BeiJingOrderPizza:依赖
-LondonCheessPizza <.. LondonOrderPizza:依赖
-LondonPepperPizza <.. LondonOrderPizza:依赖
-
-
+BeiJingCheessPizza <.. BJFactory:依赖
+BeiJingPepperPizza <.. BJFactory:依赖
+LondonCheessPizza <.. LDFactory:依赖
+LondonPepperPizza <.. LDFactory:依赖
 
 @enduml

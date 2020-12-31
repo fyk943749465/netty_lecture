@@ -1,0 +1,27 @@
+@startuml
+
+interface Interface4{
+
+    + m1(): void
+    + m2(): void
+    + m3(): void
+    + m4(): void
+}
+
+abstract class AbsAdapter {
+
+}
+
+note right: 默认对interface４中\n所有的方法提供空实现
+
+Interface4 <|.. AbsAdapter:实现
+
+class Client {
+
+}
+
+note right: 在使用AbsAdapter时，\n可以有选择地覆盖相应的方法
+
+AbsAdapter <.. Client:依赖
+
+@enduml

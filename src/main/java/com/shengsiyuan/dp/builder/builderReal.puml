@@ -1,0 +1,43 @@
+@startuml
+
+class House {
+
+}
+
+abstract class HouseBuilder {
+     - house: House = new House()
+
+     + buildBasic()
+     + buildWalls()
+     + roofed(): void
+     + build(): House
+}
+
+HouseBuilder *-- House:组合
+
+class CommonHouse {
+
+}
+
+class HighBuilding {
+
+}
+
+HouseBuilder <|-- CommonHouse:继承
+HouseBuilder <|-- HighBuilding:继承
+
+class HouseDirector {
+    houseBuilder: HouseBuilder
+}
+
+HouseDirector o-- HouseBuilder:聚合
+
+class Client {
+
+}
+
+HouseDirector <.. Client
+CommonHouse <.. Client
+HighBuilding <.. Client
+
+@enduml

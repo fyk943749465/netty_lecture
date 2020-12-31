@@ -1,0 +1,16 @@
+@startuml
+
+class Sheep {
+  - String name
+  - int age
+  - String color
+}
+
+
+class Client {
+
+}
+
+Sheep <.. Client:依赖
+
+@enduml
