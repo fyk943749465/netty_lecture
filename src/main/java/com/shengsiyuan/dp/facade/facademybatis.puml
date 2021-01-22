@@ -1,0 +1,37 @@
+@startuml
+
+class Configuration
+
+note top: 外观类 Facade
+
+interface ReflectorFactory
+
+interface ObjectWrapperFactory
+
+interface ObjectFactory
+
+
+class DefaultReflectorFactory
+note bottom: 子系统
+
+class DefaultObjectWrapperFactory
+note bottom: 子系统
+
+class DefaultObjectFactory
+note bottom: 子系统
+
+ReflectorFactory <|.. DefaultReflectorFactory
+ObjectWrapperFactory <|.. DefaultObjectWrapperFactory
+ObjectFactory <|.. DefaultObjectFactory
+
+Configuration o-- ReflectorFactory
+Configuration o-- ObjectWrapperFactory
+Configuration o-- ObjectFactory
+
+class MetaObject
+
+Configuration <.. Client
+MetaObject <.. Configuration
+
+
+@enduml

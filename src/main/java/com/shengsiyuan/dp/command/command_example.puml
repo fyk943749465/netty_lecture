@@ -1,0 +1,61 @@
+@startuml
+
+interface Command {
+    + execute(): void
+    + undo(): void
+}
+
+
+class LightOnCommand {
+    + execute(): void
+    + undo(): void
+}
+
+
+class LightOffCommand {
+    + execute(): void
+    + undo(): void
+}
+
+
+class NoCommand {
+
+}
+
+note bottom: 这里提供空实现，可以简化操作，省去对空的判断
+
+Command <|.. LightOnCommand:实现
+
+Command <|.. LightOffCommand:实现
+
+Command <|.. NoCommand
+
+
+class LightReceiver {
+     + on(): void
+     + off(): void
+}
+
+LightOffCommand o-- LightReceiver:聚合
+LightOnCommand o-- LightReceiver:聚合
+
+
+class RemotController {
+    + onCommands: Command[]
+    + offCommands: Command[]
+}
+
+
+RemotController o-- Command:聚合
+
+
+RemotController <.. Client:依赖
+LightOnCommand <.. Client:依赖
+LightOffCommand <.. Client:依赖
+LightReceiver <.. Client:依赖
+
+
+
+
+
+@enduml

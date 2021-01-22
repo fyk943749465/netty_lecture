@@ -1,0 +1,38 @@
+@startuml
+
+title 组合模式类图
+
+abstract class OrgnizationComponent {
+    + add():void
+    + get():void
+    + print(): void
+    + remove():void
+}
+
+
+class University {
+
+}
+
+class College {
+
+}
+
+class Department {
+
+}
+
+University o-- College:聚合
+College o-- Department:聚合
+
+
+OrgnizationComponent <|-- University:继承
+OrgnizationComponent <|-- College:继承
+OrgnizationComponent <|-- Department:继承
+
+
+OrgnizationComponent <.. Client:依赖
+
+
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+title 解释器模式
+
+abstract class AbstractExpression {
+    + interpret(): void
+}
+
+note left: 抽象表达式，声明一个抽象的解释操作，这个方法为\n抽象语法树中所有的节点共享
+
+class TerminalExpression {
+
+
+}
+
+note left: 为终结符表达式，实现与\n文法中的终结符相关的解释操作
+
+class NonTerminalExpression {
+
+}
+
+note bottom: 为非终结符表达式，为文法中的非终结符实现解释操作
+
+AbstractExpression <|-- TerminalExpression
+AbstractExpression <|--o NonTerminalExpression
+
+class Context {
+
+}
+
+note top: 是环境角色，含有解释器之外的全局信息
+
+
+class Client {
+
+}
+
+note right: Context和TerminalExpression信息通过CLient输入即可
+
+Context <.. Client
+AbstractExpression <.. Client
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+
+title 中介者模式原理类图
+
+abstract class Mediator {
+
+}
+
+class ConcreteMediator {
+    + colleagueMap: HashMap
+    + getMessage(): void
+}
+
+
+abstract class Colleague {
+    + sendMessage(): void
+    + getMediator(): Mediator
+}
+
+Mediator <|-- ConcreteMediator:继承
+
+ConcreteMediator o-- Colleague:聚合
+
+Colleague <|.. Alarm:继承
+Colleague <|.. CoffeeMachine:继承
+Colleague <|.. Curtains:继承
+Colleague <|.. TV:继承
+
+Mediator <--> Colleague:相互关联
+
+Mediator <.. Alarm:依赖
+Mediator <.. CoffeeMachine:依赖
+Mediator <.. Curtains:依赖
+Mediator <.. TV:依赖
+
+
+Mediator <.. Client
+Colleague <.. Client
+
+@enduml

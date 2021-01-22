@@ -1,0 +1,24 @@
+@startuml
+
+interface ITeacherDao {
+   + teach(): void
+}
+
+class TeacherDao {
+   + teach(): void
+}
+
+class ProxyFactory {
+   + ProxyFactory()
+   + getProxyInstance(): Object
+}
+
+note top: getProxyInstance():\n1.根据传入的对象（TeacherDao）目标对象\n2.利用反射机制，返回一个代理对象\n3.然后通过代理对象，调用目标对象方法
+
+class Client
+
+
+ProxyFactory <.. Client:依赖
+TeacherDao <.. Client:依赖
+ITeacherDao <|.. Client:实现
+@enduml

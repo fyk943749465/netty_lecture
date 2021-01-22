@@ -1,0 +1,52 @@
+@startuml
+
+title: 访问者模式原理类图
+
+class Visitor {
+    + operation1(): void
+    + operation2(): void
+}
+
+note top: Visitor抽象的访问者，为该对象结构中的\nConcreteElement的每一个类声明一个visit操作
+
+class Client {
+
+}
+
+class ConcreteVisitor {
+    + operation1(): void
+    + operation2(): void
+}
+
+note left: ConcreteVisitor是一个具体的\n访问者，实现每个Visitor声明的操作\n是每个操作实现的部分
+
+class Element {
+    + accept(visitor: Visitor): void
+}
+
+note bottom: 定义一个accept方法，接收一个访问着对象
+
+class ConcreteElement {
+    + accept(visitor: Visitor): void
+}
+
+note bottom: 为具体元素，实现了accept方法
+
+class ObjectStructure {
+    - element: Element
+}
+
+note top: 能枚举它的元素，可以提供一个高层的接口，用来允许访问者访问元素
+
+
+Visitor <.. Client:依赖
+ObjectStructure <.. Client:依赖
+
+Visitor <|-- ConcreteVisitor:继承
+Visitor <.. Element:依赖
+Element <|-- ConcreteElement:继承
+ObjectStructure o-- Element:聚合
+
+
+
+@enduml

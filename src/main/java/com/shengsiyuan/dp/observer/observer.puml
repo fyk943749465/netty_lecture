@@ -1,0 +1,29 @@
+@startuml
+
+title 观察者原理类图
+
+interface Subject {
+    registerObserver(o: Observer): void
+    remove(o: Observer): void
+    notifyObservers(): void
+}
+
+class WeatherData {
+    observers: ArrayList
+}
+
+Subject <|.. WeatherData:实现
+
+interface Observer {
+    update(): void
+}
+
+Observer <|.. CurrentCondition:实现
+Observer <|.. Baidu:实现
+Observer <|.. Sina:实现
+
+Observer <.. Subject:依赖
+
+WeatherData o-- Observer:聚合
+
+@enduml

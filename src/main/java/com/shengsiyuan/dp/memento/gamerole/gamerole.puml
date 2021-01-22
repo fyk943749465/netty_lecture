@@ -1,0 +1,26 @@
+@startuml
+
+title 备忘录模式
+
+class GameRole {
+    + createMemento(): Memento
+}
+
+class Memento {
+    - vit: int
+    - def: int
+}
+
+class Caretaker {
+    - memento: Memento
+}
+
+
+Caretaker o-- Memento
+
+Memento <.. GameRole
+
+GameRole <.. Client
+Memento <.. Client
+
+@enduml

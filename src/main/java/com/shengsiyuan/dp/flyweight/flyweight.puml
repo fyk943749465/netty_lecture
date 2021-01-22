@@ -1,0 +1,42 @@
+@startuml
+
+title 享元模式的原理类图
+
+class FlyweightFactory{
+
+}
+
+note left: 享元工厂类，用于构建一个容器池（集合）\n同时提供从池中获取对象的方法
+
+class Flyweight{
+
+}
+
+note left: Flyweight是抽象的享元角色，他是产品的抽象类，\n同时定义出对象的外部状态和内部状态
+
+class ConcreteFlyweight {
+
+}
+
+note left: 具体的享元角色，是具体的产品类，\n实现抽象角色定义相关业务
+
+class UnsharedConcreteFlyweight {
+
+}
+note right: 是不可共享的角色，一般不\n会出现在享元工厂
+
+class Client {
+
+}
+
+Flyweight <|-- ConcreteFlyweight
+Flyweight <|-- UnsharedConcreteFlyweight
+
+Flyweight <-- FlyweightFactory
+FlyweightFactory o-- Flyweight
+
+FlyweightFactory <-- Client
+ConcreteFlyweight <-- Client
+UnsharedConcreteFlyweight <-- Client
+
+@enduml

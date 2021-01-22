@@ -1,0 +1,65 @@
+@startuml
+
+title 装饰者模式类图
+
+class Drink {
+    - cost:float
+    - dec:string
+    + getCost()
+    + setCost(float cost)
+    + getDec()
+    + setDec(string dec)
+    + abstract cost() : float
+}
+
+class Coffee {
+    + cost() : float
+}
+
+class Decorator {
+    - obj:Drink
+    + Decorator(obj:Drink)
+    + cost(): float
+    + dec(): string
+}
+
+class Chocolate {
+    + Chocolate(obj:Drink)
+}
+
+class Milk {
+    + Milk(obj: Drink)
+}
+
+class Soy {
+    + Soy(obj: Drink)
+}
+
+class Espresso {
+    + Espresso()
+}
+
+class LongBlack {
+    + LongBlack()
+}
+
+class ShortBlack {
+    + ShortBlack()
+}
+
+
+Drink <|-- Coffee
+
+Coffee <|-- Espresso
+Coffee <|-- LongBlack
+Coffee <|-- ShortBlack
+
+Drink <|-- Decorator
+Drink o-- Decorator
+
+Decorator <|-- Chocolate
+Decorator <|-- Milk
+Decorator <|-- Soy
+
+
+@enduml

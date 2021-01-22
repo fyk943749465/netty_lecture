@@ -1,0 +1,37 @@
+@startuml
+
+abstract class State {
+    + dedcueMoney(): void
+    + raffle(): boolean
+    + dispensePrice(): void
+}
+
+class NoRaffleState
+
+class CanRaffleState
+
+class DispensePrice
+
+class DispenseOut
+
+State <|-- NoRaffleState:继承
+State <|-- CanRaffleState:继承
+State <|-- DispensePrice:继承
+State <|-- DispenseOut:继承
+
+class Activity {
+
+}
+
+Activity -- DispenseOut:关联
+Activity -- CanRaffleState:关联
+Activity -- DispenseOut:关联
+Activity -- DispensePrice:关联
+
+note "Activity类含有所有的状态对象，\n各个状态子类也含有Activity对象" as N1
+
+Activity <.. Client
+
+State <.. Client
+
+@enduml

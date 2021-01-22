@@ -1,0 +1,43 @@
+@startuml
+
+title 传统方式解决影院管理问题
+
+class DVDPlayer {
+    on();
+    off();
+    Play()
+    Pause();
+    Setdvd();
+}
+
+class Projector {
+    On();
+    off();
+    Focus();
+    Zoom();
+}
+
+class Stereo {
+    On();
+    Off();
+    SetVolumne();
+}
+
+class Popcorn{
+...
+}
+class Screen {
+...
+}
+class ThreateLights {
+...
+}
+
+DVDPlayer <.. Client:依赖
+Projector <.. Client:依赖
+Stereo <.. Client:依赖
+Popcorn <.. Client:依赖
+Screen <.. Client:依赖
+ThreateLights <.. Client:依赖
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+
+abstract class Expression {
+    + interpreter(): void
+}
+
+class VarExpression {
+
+}
+
+class SymbolExpression {
+
+}
+
+Expression <|-- VarExpression
+
+Expression <|--o SymbolExpression:继承和聚合
+
+class SubExpression {
+
+}
+
+class AddExpression {
+
+}
+
+SymbolExpression <|-- SubExpression
+SymbolExpression <|-- AddExpression
+
+
+class Calculator {
+
+}
+
+
+Calculator o-- Expression
+
+Expression <.. Client
+
+@enduml

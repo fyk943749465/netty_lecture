@@ -1,0 +1,44 @@
+@startuml
+
+title 命令模式的原理类图
+
+
+interface Command{
+    + execute(): void
+    + undo(): void
+}
+
+note left: Command是命令角色，\n需要执行的所有的命令都在这里，\n可以是接口或抽象类
+
+class ConcreteCommand{
+    + execute();
+    + undo(): void
+}
+
+note left: 将一个接收者对象与一个动作绑定，\n调用接收者相应的操作，实现execute
+
+class Receiver {
+    + action(): void
+}
+
+note left: 接收者角色，知道如何实施和\n执行一个请求相关的操作
+
+class Invoker {
+
+}
+
+note left: Invoker是调用者
+
+
+
+Command <|.. ConcreteCommand:实现
+
+ConcreteCommand o-- Receiver:聚合
+
+Invoker o-- Command
+
+Invoker <.. Client
+Receiver <.. Client
+ConcreteCommand <.. Client
+
+@enduml

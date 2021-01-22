@@ -1,0 +1,42 @@
+@startuml
+
+interface ConfigurableApplication {
+    + refresh(): void
+}
+
+abstract class AbstractApplicationContext {
+    + refresh(): void
+    + obtainFreshBeanFactory(): void
+    + refreshBeanFactory(): void
+    + getBeanFactory(): void
+    + postProcessBeanFactory(): void 钩子方法
+    + onRefresh(): void 钩子方法
+}
+
+class GenericApplicationContext {
+    + getBeanFactory(): void
+    + refreshBeanFactory: void
+}
+
+
+class AbstractRefreshableApplicationContext {
+    + getBeanFactory(): void
+    + refreshBeanFactory: void
+}
+
+ConfigurableApplication <|.. AbstractApplicationContext:实现
+
+AbstractApplicationContext <|-- GenericApplicationContext:继承
+
+AbstractApplicationContext <|-- AbstractRefreshableApplicationContext:继承
+
+
+class Client {
+
+}
+
+Client *-- ConfigurableApplication:组合
+
+note "getBeanFactory 是抽象方法\nrefreshBeanFactory是抽象方法\npostProcessBeanFactory是钩子方法\nonRefresh也是钩子方法，他们在模板方法refresh中被使用" as N1
+
+@enduml

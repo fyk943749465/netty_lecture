@@ -1,5 +1,36 @@
 @startuml
 
+class Phone {
 
+}
+
+interface Brand {
+
+}
+
+class FoldedPhone {
+
+}
+
+class UpRightPhone {
+
+}
+
+class Vivo {
+
+}
+
+class XiaoMi {
+
+}
+
+
+Brand <.. Vivo:实现
+Brand <.. XiaoMi:实现
+
+Phone <|-- FoldedPhone:继承
+Phone <|-- UpRightPhone:继承
+
+Phone o-- Brand:聚合
 
 @enduml

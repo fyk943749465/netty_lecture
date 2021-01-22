@@ -1,0 +1,54 @@
+@startuml
+
+title: 迭代器模式原理类图
+
+interface Iterator {
+    + hasNext(): boolean
+    + next(): E
+    + remove(): void
+}
+
+note left: 迭代接口，是系统提供
+
+interface Aggregate {
+    + createIterator(): Iterator
+}
+
+note right: 一个统一的聚合接口，\n将客户端和具体的聚合解耦
+
+class ConcreteIterator{
+
+}
+
+note right: 一个具体的迭代器类，管理迭代
+
+class ConcreteIterator2{
+
+}
+
+class ConcreteAggregate {
+    - arrs: ArrayList
+    + createIterator(): Iterator
+}
+
+note bottom: 具体的聚合持有对象集合
+
+class ConcreteAggregate2 {
+    - arrs: 数组
+    + createIterator(): Iterator
+}
+
+Aggregate <|.. ConcreteAggregate:实现
+Aggregate <|.. ConcreteAggregate2:实现
+
+
+Iterator <|.. ConcreteIterator:实现
+Iterator <|.. ConcreteIterator2:实现
+
+ConcreteIterator <.. ConcreteAggregate:依赖
+ConcreteIterator2 <.. ConcreteAggregate2:依赖
+
+Iterator <.. Client:依赖
+Aggregate <.. Client:依赖
+
+@enduml

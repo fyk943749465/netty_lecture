@@ -1,0 +1,33 @@
+@startuml
+
+interface State {
+    + operation1(): void
+    + operation2(): void
+}
+
+note left: State 是抽象状态角色，\n定义一个接口封装与Context的\n一个特定接口相关行为
+
+Class ConcreteStateA {
+
+}
+
+note left: 具体的状态角色，\n每个子类实现一个\n与Context的一个状态相关行为
+
+Class ConcreteStateB {
+
+}
+
+State <|-- ConcreteStateA
+State <|-- ConcreteStateB
+
+Class Context {
+    - state: State
+    + getState(): State
+}
+
+note left: Context类为环境角色，\n用于维护ConcreteState实例，\n这个实例定义当前状态
+
+
+Context o-- State
+
+@enduml

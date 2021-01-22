@@ -1,0 +1,19 @@
+@startuml
+
+class client
+
+class facade
+
+class system1
+class system2
+class system3
+
+facade o-- system1
+facade o-- system2
+facade o-- system3
+
+facade <.. client
+
+
+
+@enduml

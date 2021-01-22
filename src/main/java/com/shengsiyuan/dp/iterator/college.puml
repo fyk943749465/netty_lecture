@@ -1,0 +1,55 @@
+@startuml
+
+interface Iterator {
+    + hasNext(): boolean
+    + next(): E
+    + remove(): void
+
+}
+
+class ComputerColleageIterator {
+
+}
+
+class InfoColleageIterator {
+
+}
+
+class Department {
+
+}
+
+interface Colleage {
+    + createIterator(): Iterator
+}
+
+class ComputerColleage {
+
+}
+
+class InfoColleage {
+
+}
+
+OutputImpl o-- Colleage
+
+Colleage <|.. ComputerColleage:实现
+Colleage <|.. InfoColleage:实现
+
+Iterator <|.. ComputerColleageIterator:实现
+Iterator <|.. InfoColleageIterator:实现
+
+ComputerColleageIterator <.. ComputerColleage:依赖
+InfoColleageIterator <.. InfoColleage:依赖
+
+ComputerColleageIterator o-- Department:聚合
+InfoColleageIterator o-- Department:聚合
+ComputerColleage o-- Department:聚合
+InfoColleage o-- Department:聚合
+
+Iterator <.. Client
+OutputImpl <.. Client
+
+
+
+@enduml
